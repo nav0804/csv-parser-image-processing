@@ -5,7 +5,7 @@ const path = require('path');
 
 const router = Router();
 
-// Multer Storage Configuration
+
 const storage = multer.diskStorage({
   destination: 'uploads/',
   filename: (req, file, cb) => {
@@ -13,7 +13,6 @@ const storage = multer.diskStorage({
   },
 });
 
-// File Type Filter: Only Accept CSV
 const fileFilter = (req, file, cb) => {
   if (path.extname(file.originalname).toLowerCase() !== '.csv') {
     return cb(new Error('Only CSV files are allowed!'), false);

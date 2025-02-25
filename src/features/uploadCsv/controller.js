@@ -10,16 +10,15 @@ class UploadController {
   }
 
   async uploadCSV(req, res, next) {
-    console.log('📂 File received:', req.file);
-    console.log('📦 Request body:', req.body);
-    console.log('📁 Request headers:', req.headers);
+    console.log('File received:', req.file);
+    console.log('Request body:', req.body);
+    console.log('Request headers:', req.headers);
 
     try {
       if (!req.file) {
         return res.status(400).json({ error: 'File not found' });
       }
 
-      // Validate file type
       if (req.file.mimetype !== 'text/csv') {
         return res.status(400).json({ error: 'Invalid file type. Only CSV files are allowed.' });
       }
